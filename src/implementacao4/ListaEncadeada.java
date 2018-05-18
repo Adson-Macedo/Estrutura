@@ -10,7 +10,6 @@ package implementacao4;
  * @author Adson Macêdo
  */
 public class ListaEncadeada implements ListaEncadeada_IF {
-
     private int data;
     private ListaEncadeada next;
 
