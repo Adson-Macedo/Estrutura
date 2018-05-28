@@ -17,9 +17,11 @@ public class BST implements BST_IF{
     private BST previous;
     private BST left;
     private BST right;
+    private int height;
     
     public BST(){
         this(-1, null);
+        this.height = -1;
     }
     
     private BST(int element, BST previous){
@@ -41,6 +43,7 @@ public class BST implements BST_IF{
             this.data = element;
             this.left = new BST(-1, this);
             this.right = new BST(-1, this);
+            this.height = 0;
             
             return;
         }
@@ -50,6 +53,8 @@ public class BST implements BST_IF{
         } else {
             right.insert(element);
         }
+        
+        this.height = 1 + (left.height > right.height ? left.height: right.height);
     }
 
     @Override
@@ -124,24 +129,9 @@ public class BST implements BST_IF{
         return array;
     }
 
-    private boolean checkHeight(int height, int atual){
-        if (atual > height) return false;
-        
-        if (data == -1) return (height == atual);
-        
-        return left.checkHeight(height, atual + 1) && right.checkHeight(height, atual + 1);
-    }
-    
     @Override
     public boolean isComplete() {
-        int size = size();  
-        
-        int height = (int) ceil(log(size + 1) / log(2)) - 1;
-        
-        if (pow(2, height + 1) - 1 != size) 
-            return false;
-        
-        return checkHeight(height, -1);
+        return ((int)pow(2, height + 1) - 1 == size());
     }
     
 }
