@@ -121,14 +121,14 @@ public class BrincandoComAsEstruturas {
 
     public static void main(String[] args) throws Exception {
         ListaEncadeada lista = new ListaEncadeada();
-//        testaLista(lista);
+        testaLista(lista);
         
         BST_IF arvore = new BST();
         testaBST(arvore);
         
         System.out.println("Brincando com TabelaHash...");
         TabelaHash_IF tabela = new TabelaHash(8);
-//        testaTabelaHash(tabela);
+        testaTabelaHash(tabela);
 		
         //OBS.: Espera-se que nenhum print mostre 'false' na tela!
         
